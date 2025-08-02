@@ -45,14 +45,15 @@
 
   <div class="section">
     <h2>Audio Samples</h2>
-    <p><strong>Clean Speech:</strong></p>
-    <audio controls src="audio/clean.wav"></audio>
 
-    <p><strong>Reverberated Speech:</strong></p>
-    <audio controls src="audio/reverb.wav"></audio>
+    <p><strong><a href="#" onclick="document.getElementById('clean').play(); return false;">▶ Clean Speech</a></strong></p>
+    <audio id="clean" src="audio/clean.wav" controls></audio>
 
-    <p><strong>Dereverberated (StoRM):</strong></p>
-    <audio controls src="audio/storm.wav"></audio>
+    <p><strong><a href="#" onclick="document.getElementById('reverb').play(); return false;">▶ Reverberated Speech</a></strong></p>
+    <audio id="reverb" src="audio/reverb.wav" controls></audio>
+
+    <p><strong><a href="#" onclick="document.getElementById('storm').play(); return false;">▶ Dereverberated (StoRM)</a></strong></p>
+    <audio id="storm" src="audio/storm.wav" controls></audio>
   </div>
 
   <div class="section">
