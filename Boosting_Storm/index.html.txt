@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StoRM Poster - Interspeech 2025</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    audio {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Boosting StoRM Convergence for Optimal Dereverberation</h1>
+  <p><strong>Authors:</strong> Chandra Mohan Sharma, Arnab Kumar Roy, Anupam Mandal, Prasanta Kumar Ghosh, Prasanna Kumar KR</p>
+  <p><strong>Affiliations:</strong> IISc Bangalore & CAIR, DRDO</p>
+
+  <div class="section">
+    <h2>Paper</h2>
+    <p><a href="paper.pdf" target="_blank">Download Paper (PDF)</a></p>
+  </div>
+
+  <div class="section">
+    <h2>Slides: Diffusion & StoRM Derivation</h2>
+    <p><a href="slides.pdf" target="_blank">View Slides (PDF)</a></p>
+  </div>
+
+  <div class="section">
+    <h2>Audio Samples</h2>
+    <p><strong>Clean Speech:</strong></p>
+    <audio controls src="audio/clean.wav"></audio>
+
+    <p><strong>Reverberated Speech:</strong></p>
+    <audio controls src="audio/reverb.wav"></audio>
+
+    <p><strong>Dereverberated (StoRM):</strong></p>
+    <audio controls src="audio/storm.wav"></audio>
+  </div>
+
+  <div class="section">
+    <h2>ASR Performance</h2>
+    <p>Coming soon...</p>
+  </div>
+</body>
+</html>
