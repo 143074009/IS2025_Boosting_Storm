@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paper Demo</title>
+<title>Speech Enhancement Demo</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -13,16 +13,18 @@
     }
     header {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
     .logos {
         display: flex;
         justify-content: center;
         gap: 20px;
         margin-bottom: 10px;
+        flex-wrap: wrap;
     }
     .logos img {
         height: 60px;
+        max-width: 100%;
     }
     h1 {
         margin: 5px 0;
@@ -34,15 +36,36 @@
         font-weight: normal;
         color: #555;
     }
+    .view-paper-btn {
+        margin-top: 15px;
+        background: #28a745;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .view-paper-btn:hover {
+        background: #218838;
+    }
+    .audio-group {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 15px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .group-title {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: #333;
+    }
     .demo-row {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        background: white;
-        margin: 10px 0;
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-bottom: 15px;
     }
     .audio-section, .image-section {
         flex: 1;
@@ -51,38 +74,22 @@
     }
     .image-section img {
         max-width: 100%;
+        height: auto;
         border-radius: 5px;
     }
-    .waveform-container {
-        margin-top: 10px;
+    audio {
+        width: 100%;
+        margin-top: 5px;
     }
-    .play-btn {
-        padding: 6px 12px;
-        background: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+    .label {
+        font-weight: bold;
         margin-bottom: 5px;
+        display: block;
     }
-    .play-btn:hover {
-        background: #0056b3;
-    }
-    .resources {
-        margin-top: 30px;
-        text-align: center;
-    }
-    .resources a {
-        display: inline-block;
-        margin: 5px 10px;
-        padding: 8px 15px;
-        background: #007bff;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-    .resources a:hover {
-        background: #0056b3;
+    @media (max-width: 768px) {
+        .demo-row {
+            flex-direction: column;
+        }
     }
 </style>
 </head>
@@ -97,85 +104,134 @@
     </div>
     <h1>Boosting StoRM Convergence with Metric Guidance and Non-uniform State-Sampling for Optimal Dereverberation</h1>
     <h2>Chandra Mohan Sharma, Arnab Kumar Roy, Anupam Mandal, Prasanta Kumar Ghosh, Prasanna Kumar KR</h2>
+    <a href="paper.pdf" target="_blank" class="view-paper-btn">📄 View Paper (PDF)</a>
 </header>
 
-<div class="demo-row">
-    <div class="audio-section">
-        <h3>Clean Speech</h3>
-        <button class="play-btn" data-player="wave1">Play / Pause</button>
-        <div id="wave1" class="waveform-container"></div>
+<!-- Loop for 5 Speech Samples -->
+<div class="audio-group">
+    <div class="group-title">Speech Sample 1</div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Clean Speech</span>
+            <audio controls><source src="clean_1.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_clean_1.png" alt="Clean Spectrogram 1"></div>
     </div>
-    <div class="image-section">
-        <img src="reverb_clean.png" alt="Clean Spectrogram">
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Reverb Speech</span>
+            <audio controls><source src="noisy_1.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_1.png" alt="Noisy Spectrogram 1"></div>
     </div>
-</div>
-
-<div class="demo-row">
-    <div class="audio-section">
-        <h3>Reverbed Speech</h3>
-        <button class="play-btn" data-player="wave2">Play / Pause</button>
-        <div id="wave2" class="waveform-container"></div>
-    </div>
-    <div class="image-section">
-        <img src="reverb.png" alt="Noisy Spectrogram">
-    </div>
-</div>
-
-<div class="demo-row">
-    <div class="audio-section">
-        <h3>Dereverbed Speech</h3>
-        <button class="play-btn" data-player="wave3">Play / Pause</button>
-        <div id="wave3" class="waveform-container"></div>
-    </div>
-    <div class="image-section">
-        <img src="reverb_enhance.png" alt="Denoised Spectrogram">
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Dereverb Speech</span>
+            <audio controls><source src="denoised_1.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_enhance_1.png" alt="Denoised Spectrogram 1"></div>
     </div>
 </div>
 
-<div class="resources">
-    <a href="Boosting_StoRM.pdf" target="_blank">Read the Paper</a>
-    <a href="tutorial_slides.pdf" target="_blank">View Slides</a>
-    <!-- <a href="https://github.com/yourproject" target="_blank">Source Code</a>-->
+<div class="audio-group">
+    <div class="group-title">Speech Sample 2</div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Clean Speech</span>
+            <audio controls><source src="clean_2.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_clean_2.png" alt="Clean Spectrogram 2"></div>
+    </div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Reverb Speech</span>
+            <audio controls><source src="noisy_2.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_2.png" alt="Noisy Spectrogram 2"></div>
+    </div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Dereverb Speech</span>
+            <audio controls><source src="denoised_2.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_enhance_2.png" alt="Denoised Spectrogram 2"></div>
+    </div>
 </div>
 
-<!-- WaveSurfer.js -->
-<script src="wavesurfer.min.js"></script>
-<script>
-    // Initialize players
-    const players = {
-        wave1: WaveSurfer.create({
-            container: '#wave1',
-            waveColor: '#ddd',
-            progressColor: '#007bff',
-            height: 60
-        }),
-        wave2: WaveSurfer.create({
-            container: '#wave2',
-            waveColor: '#ddd',
-            progressColor: '#007bff',
-            height: 60
-        }),
-        wave3: WaveSurfer.create({
-            container: '#wave3',
-            waveColor: '#ddd',
-            progressColor: '#007bff',
-            height: 60
-        })
-    };
+<div class="audio-group">
+    <div class="group-title">Speech Sample 3</div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Clean Speech</span>
+            <audio controls><source src="clean_3.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_clean_3.png" alt="Clean Spectrogram 3"></div>
+    </div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Reverb Speech</span>
+            <audio controls><source src="noisy_3.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_3.png" alt="Noisy Spectrogram 3"></div>
+    </div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Dereverb Speech</span>
+            <audio controls><source src="denoised_3.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_enhance_3.png" alt="Denoised Spectrogram 3"></div>
+    </div>
+</div>
 
-    // Load audio files
-    players.wave1.load('clean.wav');
-    players.wave2.load('noisy.wav');
-    players.wave3.load('denoised.wav');
+<div class="audio-group">
+    <div class="group-title">Speech Sample 4</div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Clean Speech</span>
+            <audio controls><source src="clean_4.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_clean_4.png" alt="Clean Spectrogram 4"></div>
+    </div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Reverb Speech</span>
+            <audio controls><source src="noisy_4.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_4.png" alt="Noisy Spectrogram 4"></div>
+    </div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Dereverb Speech</span>
+            <audio controls><source src="denoised_4.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_enhance_4.png" alt="Denoised Spectrogram 4"></div>
+    </div>
+</div>
 
-    // Play/pause buttons
-    document.querySelectorAll('.play-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const id = btn.getAttribute('data-player');
-            players[id].playPause();
-        });
-    });
-</script>
+<div class="audio-group">
+    <div class="group-title">Speech Sample 5</div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Clean Speech</span>
+            <audio controls><source src="clean_5.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_clean_5.png" alt="Clean Spectrogram 5"></div>
+    </div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Reverb Speech</span>
+            <audio controls><source src="noisy_5.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_5.png" alt="Noisy Spectrogram 5"></div>
+    </div>
+    <div class="demo-row">
+        <div class="audio-section">
+            <span class="label">Dereverb Speech</span>
+            <audio controls><source src="denoised_5.wav" type="audio/wav"></audio>
+        </div>
+        <div class="image-section"><img src="reverb_enhance_5.png" alt="Denoised Spectrogram 5"></div>
+    </div>
+</div>
 
 </body>
 </html>
